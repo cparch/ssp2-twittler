@@ -1,0 +1,130 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+     <title>Twittler</title>
+
+      <!-- Custom CSS -->
+    <link rel="stylesheet" href="twittlerstyle.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+   
+
+    <div class='buttons'>
+      <button class='button'>New Tweets</button>
+    </div>
+
+    <div class='tweets'></div>
+    
+    <script id='tweetGen'>
+    var tweeted = {};
+    var $this = $(this)
+    
+    var index2 = streams.home.length - 1;
+    
+    $('.button').on('click', function(){
+        
+        var num = streams.home.length - 1;
+        while(num > index2){
+          var tweet = streams.home[num];
+          var $tweet = $('<div></div>');
+          var date = streams.home[num]['created_at']
+          // var $date = $('<div></div>');
+          tweeted[tweet.user] = tweeted[tweet.user] || [];
+          tweeted[tweet.user].push(date + ' ' + tweet.user + ': ' + tweet.message);
+          console.log(tweeted)
+          var tweetUser = '<div>' + date +  '  @  <span><button>' + tweet.user + '</button></span> : ' + tweet.message + '</div>';
+
+
+
+          // console.log(tweetUser);
+          // $tweet.text(date + ' ' + '@' + tweet.user + ': ' + tweet.message)
+
+          // $tweet.prependTo($('.tweets'));
+          $('.tweets').prepend(tweetUser)
+          
+          num -= 1;
+        }
+
+        // $('span').on('click', function(){
+        //   for (var key in streams.users.shawndrost) {
+        //     console.log(streams.users.shawndrost[key].message)
+        //   }
+
+        $('span > button').on('click', function($this) {
+          $('.tweets').html('')
+          $('body').html('');
+          console.log(tweet.user)
+          for (var i = 0; i < tweeted[tweet.user].length; i++) {
+          $('body').append(tweeted[tweet.user][i] + '<br/>');
+        }
+        });
+
+
+        index2 = streams.home.length -1
+
+    })
+
+
+      
+      $(document).ready(function(){
+        var $body = $('body');
+        // $body.html('');
+       
+
+         //autoTweet.appendTo($body);
+        
+        var index = streams.home.length - 1;
+        while(index >= 0){
+          var tweet = streams.home[index];
+          var $tweet = $('<div></div>');
+          var date = streams.home[index]['created_at']
+          
+          var tweetUser = '<div>' + date +  '  @  <span><button>' + tweet.user + '</button></span> : ' + tweet.message +  '</div>';
+          tweeted[tweet.user] = tweeted[tweet.user] || [];
+          tweeted[tweet.user].push(date + ' ' + tweet.user + ': ' + tweet.message);
+          // var $date = $('<div></div>');
+          // $tweet.text(date + ' ' + '@' + tweet.user + ': ' + tweet.message);
+          // $tweet.appendTo($body);
+          $('body').append(tweetUser)
+          
+          // console.log(tweet.user)
+          index -= 1;
+        }
+
+        $('span > button').on('click', function(){
+          $body.html('');
+          $('body').html('')
+          console.log(tweet.user)
+          for (var i = 0; i < tweeted[tweet.user].length; i++) {
+          $('body').append(tweeted[tweet.user][i] + '<br/>');
+        }
+
+
+
+        });
+
+
+
+      });
+
+
+
+      
+
+          
+
+    </script>
+
+  </body>
+
+</html>

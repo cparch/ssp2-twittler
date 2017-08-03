@@ -1,0 +1,32 @@
+.button {
+    margin: 0 auto;
+    background-color: #6acab8;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 12px 32px;
+    text-transform: uppercase;
+    display: block;
+    font-size: 15px;
+    margin-bottom: 20px;
+    cursor: s-resize;
+}
+
+
+body {
+    padding: 12px 20% 10px 20%;
+    background-color: #000000;
+    color: #6acab8; 
+ /*       border:10px white;
+    border-style: dotted;
+    max-height: 30px;
+    max-width: 50%px;
+    overflow: scroll;*/
+
+
+    
+}
+
+
+
+
